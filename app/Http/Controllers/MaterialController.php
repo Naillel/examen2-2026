@@ -41,4 +41,10 @@ class MaterialController extends Controller
     return response()->json($material, 200);
 }
     // index()  → Miembro 3
+
+    public function index(): JsonResponse
+{
+    $materiales = Material::with('categoria')->get();
+    return response()->json($materiales, 200);
+}
 }
