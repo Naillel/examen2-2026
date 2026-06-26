@@ -10,7 +10,7 @@ class MaterialControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function dadoUnMaterialQueNoExiste_insertarMaterial_funcionaCorrectamente(): void
+    public function test_dadoUnMaterialQueNoExiste_insertarMaterial_funcionaCorrectamente(): void
     {
         $categoria = Categoria::create(['nombre' => 'Papelería']);
 
