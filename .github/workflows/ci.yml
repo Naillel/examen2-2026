@@ -31,12 +31,12 @@ jobs:
       - name: Configurar PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.3"
+          php-version: "8.4"
           extensions: mbstring, pdo, pdo_mysql
           coverage: none
 
       - name: Instalar dependencias
-        run: composer install --prefer-dist --no-progress --no-interaction
+        run: composer update --prefer-dist --no-progress --no-interaction
 
       - name: Copiar .env de pruebas
         run: cp .env.example .env.testing
