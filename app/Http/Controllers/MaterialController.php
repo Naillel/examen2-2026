@@ -24,5 +24,21 @@ class MaterialController extends Controller
     }
 
     // update() → Miembro 2
+    public function update(Request $request, int $id): JsonResponse
+{
+    $material = Material::findOrFail($id);
+
+    $validated = $request->validate([
+        'unidadMedida' => 'sometimes|string|max:255',
+        'descripcion'  => 'sometimes|string|max:255',
+        'ubicacion'    => 'sometimes|string|max:255',
+        'idCategoria'  => 'sometimes|integer|exists:categorias,idCategoria',
+    ]);
+
+    $material->update($validated);
+    $material->load('categoria');
+
+    return response()->json($material, 200);
+}
     // index()  → Miembro 3
 }
